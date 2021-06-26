@@ -1,0 +1,156 @@
+.Status {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.Button {
+    text-align: center;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.Load {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.AddForm {
+    background-color: #CDCDCD;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.SearchBookForm {
+    background-color: #CDCDCD;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.SearchBookFormButton {
+    margin: 0;
+    text-align: center;
+}
+
+.actions {
+    margin-top: 1rem;
+    text-align: right;
+}
+
+.actions button {
+    font: inherit;
+    cursor: pointer;
+    background-color: #77002e;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid #77002e;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.actions button:hover,
+.actions button:active {
+    background-color: #a50e48;
+    border-color: #a50e48;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+#RegButton {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+.form-signin .checkbox {
+    font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+#input {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px;
+    margin: auto;
+}
+
+.form-signin {
+    background-color: #CDCDCD;
+    padding: 100px;
+}
+
+.table {
+    padding: 100px;
+}
+
+.popup-box {
+    position: fixed;
+    background: #00000050;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+.box {
+    position: relative;
+    width: 70%;
+    margin: 0 auto;
+    height: auto;
+    max-height: 70vh;
+    margin-top: calc(100vh - 85vh - 20px);
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    border: 1px solid #999;
+    overflow: auto;
+}
+
+.close-icon {
+    content: 'x';
+    cursor: pointer;
+    position: fixed;
+    right: calc(15% - 30px);
+    top: calc(100vh - 85vh - 33px);
+    background: #ededed;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    line-height: 20px;
+    text-align: center;
+    border: 1px solid #999;
+    font-size: 20px;
+}
