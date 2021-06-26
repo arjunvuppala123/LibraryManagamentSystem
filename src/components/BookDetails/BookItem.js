@@ -63,11 +63,11 @@ function BookItem(props) {
 
     function submitHandler(event) {
         event.preventDefault();
-        
+
         const enteredIssueName = ownerInputRef.current.value;
         const systemDate = new Date();
         const enteredDate = systemDate.toISOString().slice(0, 10);
-        
+
         var future = new Date();
         future.setDate(future.getDate() + 14);
         const enteredDueDate = future.toISOString().slice(0, 10);
@@ -120,10 +120,11 @@ function BookItem(props) {
 
     return (
         <tr key={props.id}>
+            <th>{props.BookId}</th>
             <td><img height="200" src={props.image} alt={props.title} /></td>
             <td>{props.title}</td>
             <td>{props.author}</td>
-            <td>{props.description}</td>
+            <td>{props.avail}</td>
             {Admin && (<td>
                 <Button onClick={togglePopup} className="Button" variant="primary">Issue
                 </Button>

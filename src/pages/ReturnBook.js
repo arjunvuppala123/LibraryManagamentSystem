@@ -1,8 +1,9 @@
 import ReturnBookForm from "../components/Forms/BookReturnForm"
 import Table from 'react-bootstrap/Table'
-import Button from 'react-bootstrap/Button'
 import Popup from '../components/BookDetails/popup';
-import React, { useState, useEffect, useContext } from "react"
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import React, { useState, useEffect, useContext, useRef } from "react"
 import AuthContext from '../store/auth-context';
 
 function ReturnBook() {
@@ -10,6 +11,9 @@ function ReturnBook() {
     const [booksmain, setbooksmain] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [Admin, setAdmin] = useState(false);
+    const [filtered, setFiltered] = useState([]);
+
+    const issuedToInputRef = useRef();
 
     const authCtx = useContext(AuthContext);
     const isLoggedIn = authCtx.isLoggedIn;
@@ -52,7 +56,6 @@ function ReturnBook() {
                 }
             }
         })
-
 
     useEffect(() => {
         fetch(
@@ -114,8 +117,8 @@ function ReturnBook() {
         });
 
 
-        for(const key in books){
-            if(books[key].id === bookId){
+        for (const key in books) {
+            if (books[key].id === bookId) {
                 title = books[key].titlename
             }
         }
@@ -141,6 +144,16 @@ function ReturnBook() {
         })
     }
 
+    const submitHandler = () => {
+        let filtered = [];
+        for (let i = 0; i < booksmain.length; i++) {
+            if (booksmain[i].issuedTo.includes(issuedToInputRef.current.value.toLowerCase())) {
+                filtered.push(booksmain[i]);
+            }
+        }
+        setFiltered(filtered);
+    }
+
     const togglePopup = () => {
         setIsOpen(!isOpen);
     }
@@ -148,23 +161,38 @@ function ReturnBook() {
     return (
         <div>
             <h1>This is the Return book page</h1>
-            <ReturnBookForm />
+            <div className="AddForm">
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Issued to:</Form.Label>
+                    <Form.Control ref={issuedToInputRef} type="text" />
+                </Form.Group>
+                <br />
+                <Button variant="primary" onClick={submitHandler}>
+                    Search
+                </Button>
+            </div>
             <div className="Status">
                 <Table striped bordered hover size="sm">
                     <thead>
                         <tr>
+                            <th>Book ID</th>
                             <th>Title Name</th>
                             <th>Author</th>
                             <th>Issued by:</th>
+                            <th>Due Date</th>
+                            <th>Fine</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        {booksmain.map((book) => (
+                        {filtered.map((book,i) => (
                             <tr key={book.id}>
+                                <td>{i}</td>
                                 <td>{book.titleName}</td>
                                 <td>{book.author}</td>
                                 <td>{book.issuedTo}</td>
+                                <td>{book.dueDate}</td>
+                                <td>0</td>
                                 {Admin && <td><Button onClick={togglePopup} className="Button" variant="primary">Return</Button></td>}
                                 {isOpen && <Popup
                                     content={<>
